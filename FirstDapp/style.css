@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", sans-serif;
+  color: whitesmoke;
+  background-image: url("./bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  /* background: linear-gradient(to left, lightyellow, lightpink);
+ background: linear-gradient(to left, darkblue, darksalmon); */
+}
+
+.child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* background: linear-gradient(to left, #4848e4, darkcyan); */
+  padding: 1rem 8rem 3rem;
+  border-radius: 300px;
+}
+
+.child button {
+  width: 120px;
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  margin-left: 15px;
+  font-size: 1rem;
+}
+
+.btns {
+  margin-top: 20px;
+}
+
+.para {
+  font-size: 1.1rem;
+}
+
+label {
+  font-size: 1.3rem;
+}
+
+#mood {
+  width: 90%;
+  padding: 7px 0;
+  font-size: 1.2rem;
+  outline: none;
+  /*background: linear-gradient(to left, lightgoldenrodyellow, lightcyan);*/
+  border: none;
+  /* background: #eaf1f1;
+  color: #17175b; */
+  text-align: center;
+  border-radius: 5px;
+}

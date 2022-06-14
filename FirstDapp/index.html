@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mood Dapp</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="child">
+        <h1 class="heading">This is My First Dapp Bro</h1>
+        <p class="para">Here we can set or get the mood:</p>
+        <label for="mood" class="show-mood">Input Mood: </label>
+        <br />
+        <input type="text" id="mood" placeholder="Enter your mood" />
+        <div class="btns">
+          <button onclick="setMood()">Set Mood</button>
+          <button onclick="getMood()">Get Mood</button>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+      type="application/javascript"
+    ></script>
+    <script src="mood.js"></script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script
+  src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+  type="application/javascript"
+></script>
+
+    <script>
+
+        const MoodContractAddress = "0x6Fbe3f76227180d53b6F68f7383Fe3CC1ab610FE";
+  
+        let MoodContract;
+        let signer;   
+
+  const MoodContractABI = [
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_mood",
+                "type": "string"
+            }
+        ],
+        "name": "setMood",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getMood",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]
+
+         let provider = new ethers.providers.Web3Provider(window.ethereum, "rinkeby")
+
+        provider.send("eth_requestAccounts", []).then(() => {
+          provider.listAccounts().then((accounts) => {
+            signer = provider.getSigner(accounts[0]);
+            MoodContract = new ethers.Contract(
+              MoodContractAddress,
+              MoodContractABI,
+              signer
+            );
+          });
+        });
+     
+        
+        async function getMood() {
+    const getMoodPromise = MoodContract.getMood()
+    const Mood = await getMoodPromise
+    document.querySelector('.show-mood').textContent = `Your Mood is ${Mood}`
+    console.log(Mood)
+}
+
+async function setMood() {
+    const mood = document.getElementById('mood').value;
+    const setMoodPromise = MoodContract.setMood(mood)
+    await setMoodPromise;
+} 
+
+
+
+
+    </script>
+
+    <style>
+      
+
+      body{
+       
+        background-image: url('./bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100vh;
+        
+      }
+
+      .flex{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem
+      }
+      div{
+        margin: 1rem;
+      }
+      </style>
+
+
+      <title>Document</title>
+ 
+ 
+    </head>
+  
+  
+  
+  
+  
+    <body class="flex">
+    <h1>This is My First Dapp Bhailog</h1>
+    <p>Here we will set your mood</p>
+
+    <h1 class=" getmood">Your mood is:</h1>
+    <label for="mood">Input Mood<label>
+       <br />
+    <input type="text" id="mood" />
+    <div class="btn flex">
+      <button onclick="setMood()">Set Your Mood</button>
+      <button onclick="getMood()">Get Your Mood</button>
+    </div>
+  </body>
+</html> -->
