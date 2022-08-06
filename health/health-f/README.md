@@ -1,10 +1,7 @@
 ![landing](https://user-images.githubusercontent.com/98407930/183013671-ac02cd0f-6d5e-4334-9f78-650d012512c3.png)
 
 # HealthBase
-## Inspiration 💡
- Few months ago my brother was admitted into hospital . There we encountered few peoples who were struggliong to admit their patients into the hospital
- . The reason behind that was that they have some documents missing . This unmanagement of the documents leads to the more suffering of the patients and 
- waste of critical time. With a view of better management of the medical documentation that no one should suffer from this ,  this Project was made.
+
 
 ## Project Description 📖
 
@@ -21,46 +18,6 @@ precious data , You can also delete your data if you want . You will have the fu
 technology means no one (including government and the site owner itself) cant delete your data . (Thats cool 😎 right?) You can also update your details if you 
 have made any typo😅
 
-#### NOTE: To see the backend files visit [here](https://github.com/shikhar360/web3Conf-project/tree/3178b386d943d263ed97cad9e66a9d821799c3cd/contract(backendFiles))
-or you can simply got to the Contract(backendFiles) in the above folder
-
-
-## Technologies Used 🔱
-
-<b>IPFS (web3.storage)</b> 
-
-For storage to the Patients Data web3.storage is been used . The document that is taken using the frontend is pushed to the ipfs.
-After uploading we get the CID by which i have made a link dynamically using template literals and fetched that in the frontend . 
-
-#### Links to the files where Ipfs is been used :
-[Link to the StoreData function](https://github.com/shikhar360/web3Conf-project/blob/3178b386d943d263ed97cad9e66a9d821799c3cd/constants/StoreData.js)
-
-[Line 112 ( sendToIpfs function) (where it is actually used) ](https://github.com/shikhar360/web3Conf-project/blob/3178b386d943d263ed97cad9e66a9d821799c3cd/pages/Docs.js)
-
-
-<b>RainbowKit</b>
-
-Rainbow kit is getting pretty famous with the ability of high customisability . So i decided to use that
-
-<b>Next.js</b>
-
-Next js framework is known for its SSR(server side rendring) capability thats why i have used that in this  Project
-
-<b>Tailwind.css</b>
-
-Tailwindcss have made the work soo much faster and easy that also saved a lot of time .
-
-<b>Wagmi</b>
-
-Contract interaction is been done using the a newly founded library named wagmi . 
-
-<b>Hardhat</b>
-
-Hardhat is the framework where the smartcontract is been made using the solidity language.
-
-<b>Alchemy</b>
-
-The smartcontract is deployed to the testnet using the ALCHEMY api.
 
 
 ## Contract Address
