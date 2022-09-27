@@ -1,24 +1,19 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
-const hre = require("hardhat");
-
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
+  const chainId = network.config.chainId;
+  const CasinoContractFactory = await ethers.getContractFactory("Casino");
 
-  const lockedAmount = hre.ethers.utils.parseEther("1");
+  const deployContract = await CasinoContractFactory.deploy(
+    "0x7a1bac17ccc5b313516c5e16fb24f7659aa5ebed",
+    ethers.utils.parseEther("0.01"),
+    "0x4b09e658ed251bcafeebbc69400383d49f344ace09b9576fe248bb02c003fe9f",
+    2032,
+    200000,
+    240
+  );
 
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  await deployContract.deployed();
 
-  await lock.deployed();
-
-  console.log("Lock with 1 ETH deployed to:", lock.address);
+  console.log("Casino contract is deployed to:", deployContract.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
