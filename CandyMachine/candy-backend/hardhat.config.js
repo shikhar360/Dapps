@@ -9,14 +9,14 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
-const ALCHEMY_KEY = process.env.ALCHEMY_KEY;
+
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 module.exports = {
   solidity: "0.8.4",
   networks: {
-    rinkeby: {
-      url: ALCHEMY_KEY,
+    /*rinkeby*/ mumbai: {                          //-- change this to `mumbai`
+      url: "https://rpc.ankr.com/polygon_mumbai",  //-- also this if you plan to deploy it on mumbai
       accounts: [PRIVATE_KEY],
     },
   },
