@@ -1,60 +1,62 @@
 import type { NextPage } from "next";
-import Head from "next/head";
+import React, { useEffect, useState, useRef } from "react";
+import Link from "next/link";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import getNfts from "../utils";
-import React, { useEffect, useState } from "react";
-import { Nft } from "@ankr.com/ankr.js/dist/types";
-import { clearLine } from "readline";
+
 const Home: NextPage = () => {
-  const [add, setAdd] = useState<string>("");
-  const [nfts, setNfts] = useState<Nft[]>([]);
-
-  async function getAllNFT(add: string) {
-    const { nfts } = await getNfts(add);
-    console.log(nfts);
-    setNfts(nfts);
-  }
-
-  function handleAddress(e: React.ChangeEvent<HTMLInputElement>) {
-    setAdd(e.target.value);
-  }
   return (
-    <div className=" scroll-smooth">
-      <div
-        className={` flex flex-col gap-8 items-center justify-start pt-12 pb-12`}
-      >
-        <h1 className="text-3xl">Your NFT Gallery</h1>
-        <input
-          className="w-96 text-center p-2 rounded-md "
-          type="text"
-          placeholder="Enter your wallet address"
-          onChange={handleAddress}
-        />
-        <button
-          className="bg-violet-700 text-stone-100 p-2 rounded-sm hover:bg-green-500 transition-all transition-300 transition-linear "
-          onClick={() => getAllNFT(add)}
-        >
-          Submit
-        </button>
-      </div>
-      <div className=" w-full h-max grid grid-cols-4 items-center gap-12 px-20 ">
-        {nfts?.map((nft: Nft, ind: number) => {
-          return (
-            <div
-              key={ind}
-              className="w-full h-full rounded-xl flex flex-col items-center justify-start gap-4 border-2 p-4 "
-            >
-              <img
-                src={nft.imageUrl}
-                width={100}
-                height={100}
-                className="h-full w-full rounded-xl"
+    <div className="w-full h-screen relative ">
+      <Link href="/gallery">
+        <span className="sm:ml-auto absolute top-6 right-6 hidden md:block hover:bg-amber-500 transition-all transition-300 transition-linear p-2 rounded-md  font-bold">
+          Gallery
+        </span>
+      </Link>
+
+      <div className=" h-fit md:w-2/5 w-9/12 flex gap-2 absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 border-8 border-white">
+        <h1 className="md:text-9xl sm:text-6xl text-3xl font-bold absolute -top-20 -left-40 hidden md:block">NFT </h1>
+        <div className=" h-full w-4/12 flex flex-col  gap-2 relative">
+          <Image
+            src="/img/9.jfif"
+            width={130}
+            height={250}
+            alt="image"
+            className="rounded-md h-full"
+          />
+          <Image
+            src="/img/3.gif"
+            width={120}
+            height={125}
+            alt="image"
+            className="rounded-md"
+          />
+        </div>
+        <div className="w-4/5">
+          <h1 className=" md:text-4xl text-center text-2xl  font-semibold pb-4">
+            Shill Your Collection
+          </h1>
+          <div className="w-full flex  ">
+            <span className=" ">
+              <Image
+                src="/img/7.jfif"
+                width={220}
+                height={460}
+                alt="image"
+                className="rounded-md "
               />
-              <span>{nft.name}</span>
-            </div>
-          );
-        })}
+            </span>
+            <span className=" relative md:text-sm  text-xs sm:w-full w-2/4 text-center  flex items-center flex-col p-2 m-2">
+              One and only place to see all your NFTs , no matter if they are on
+              different chains , we support chains like polygon , ethereum nd
+              bsc
+              <Link href="/gallery">
+                <a className=" w-32 lg:mt-34 md:mt-12 mt-10 bg-green-500 transition-all transition-300 transition-linear p-2 rounded-md z-20 font-bold">
+                  Gallery
+                </a>
+              </Link>
+        <h1 className="md:text-9xl sm:text-6xl text-3xl font-bold absolute hidden md:block -bottom-20 -right-96 text-gray-400 ">Station</h1>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
