@@ -23,17 +23,17 @@ const Gallery: NextPage = () => {
   }
 
   return (
-    <div className=" scroll-smooth w-full h-full   pb-24">
+    <div className="  scroll-smooth w-full min-h-screen bg-white  pb-24">
       <div
         className={` flex lg:flex-row flex-col gap-6 items-start justify-start pt-6 px-12 pb-12`}
       >
         <div className="text-2xl flex items-center">
-          <span className="font-semibold">NFT Gallery</span>
+          <span className="font-semibold  text-black ">NFT Gallery</span>
           <Image src="/img/2.gif" alt="image" width={80} height={50} />
         </div>
 
         <input
-          className="w-96 text-center p-2 rounded-md border-2 "
+          className="w-96 text-center text-black p-2 rounded-md border-2 bg-white "
           type="text"
           placeholder="Enter your wallet address"
           onChange={handleAddress}
@@ -45,7 +45,7 @@ const Gallery: NextPage = () => {
           Submit
         </button>
         <Link href="/">
-          <span className="sm:ml-auto absolute top-6 right-6 hover:bg-green-500 transition-all transition-300 transition-linear p-2 rounded-md ">
+          <span className="sm:ml-auto absolute top-6 right-6 hover:bg-green-500 transition-all transition-300 transition-linear p-2 rounded-md  text-black  ">
             Home 🏡
           </span>
         </Link>
@@ -65,7 +65,7 @@ const Gallery: NextPage = () => {
                 className="h-full w-full rounded-xl"
               />
 
-              <span className="text-sm w-full text-center truncate font-medium">
+              <span className="text-sm w-full text-center truncate font-medium text-black">
                 {nft.name}
               </span>
             </div>
