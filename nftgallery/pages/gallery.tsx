@@ -33,7 +33,7 @@ const Gallery: NextPage = () => {
         </div>
 
         <input
-          className="w-96 text-center text-black p-2 rounded-md border-2 bg-white "
+          className="md:w-96 w-64 truncate text-center text-black p-2 rounded-md border-2 bg-white "
           type="text"
           placeholder="Enter your wallet address"
           onChange={handleAddress}

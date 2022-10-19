@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+https://user-images.githubusercontent.com/98407930/196601863-778e3a9e-4803-410a-8ea1-7a78e8deeb67.mp4
+
+[Website Link](https://nftgallery-two.vercel.app/gallery)
 
 ## Getting Started
 
