@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 
 export default function App({ Component, pageProps }: AppProps) {
   
-  return (<div className="flex flex-col items-center justify-start">
+  return (<div >
      <Navbar/>
     <Component {...pageProps} />
   </div>)
