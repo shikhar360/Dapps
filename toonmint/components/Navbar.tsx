@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export default function Navbar() {
-  const menu = useRef<boolean>(false);
+
   const [width, setWidth] = useState<number >(200);
   const [isActive, setIsActive] = useState<boolean>(false);
   const sm: number = 648;
@@ -64,8 +65,8 @@ export default function Navbar() {
             <span className="cursor-pointer hover:bg-green-500 p-1.5 rounded-xl transition-all duration-300 ease-linear ">
             Mint Here!
             </span>
-            <span className="cursor-pointer hover:bg-green-500 p-1.5 rounded-xl transition-all duration-300 ease-linear  ">
-              Connect wallet
+            <span className="cursor-pointer hover:bg-green-500  rounded-xl transition-all duration-300 ease-linear  ">
+             <ConnectButton/>
             </span>
           </>
         ) : null}
