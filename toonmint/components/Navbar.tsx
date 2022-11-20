@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Link from "next/link";
 
 export default function Navbar() {
 
@@ -57,13 +58,21 @@ export default function Navbar() {
         {isActive || width > sm ? (
           <>
             <span className="cursor-pointer hover:bg-green-500 p-1.5 rounded-xl transition-all duration-300 ease-linear  ">
-              Home{" "}
+            <Link href={"/"}>
+             Home
+            </Link>
             </span>
             <span className="cursor-pointer hover:bg-green-500 p-1.5 rounded-xl transition-all duration-300 ease-linear  ">
+            <Link href={"/AllNFT"}>
+
              All NFTs
+            </Link>
             </span>
             <span className="cursor-pointer hover:bg-green-500 p-1.5 rounded-xl transition-all duration-300 ease-linear ">
+              <Link href={"/Mint"}>
+              
             Mint Here!
+              </Link>
             </span>
             <span className="cursor-pointer hover:bg-green-500  rounded-xl transition-all duration-300 ease-linear  ">
              <ConnectButton/>
