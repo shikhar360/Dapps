@@ -1,20 +1,22 @@
 import React, { ChangeEvent, useState, useRef } from "react";
 import { Formik } from "formik";
-
+import fs from "fs";
 import { ContractAddress } from "../constants/index";
 
 interface MyVals {
-  file : Blob | string,
-  name : string,
-  description : string,
-  contract : string
+  file: Blob | string;
+  name: string;
+  description: string;
+  contract: string;
 }
 
 export default function Mint() {
-  
   const formEL = useRef<HTMLFormElement>(null!);
-   const tokens = process.env.NEXT_PUBLIC_TOKEN
-
+  const tokens = process.env.NEXT_PUBLIC_TOKEN;
+  const [link, setLink] = useState<string>(
+    `https://opensea.io/assets/matic/${ContractAddress}`
+  );
+ 
   const [allInfo, setAllInfo] = useState<MyVals>({
     file: "",
     name: "",
@@ -22,35 +24,81 @@ export default function Mint() {
     contract: "",
   });
 
-
   async function minting(val: MyVals) {
     try {
       console.log(val.file);
-      
 
-      //uploading
-      // const form = new FormData();
-      //  form.append("file", val.file.name);
+      const form = new FormData();
+      form.append("file", val.file);
 
-      // const options = {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type":
-      //       "multipart/form-data; boundary=---011000010111000001101001",
-      //     Authorization: `${tokens}` ,
-      //   },
-      //   body: form
-      // };
-     
-      // // options.body = val.file
-      // const data  = await fetch("https://api.nftport.xyz/v0/files", options)
-      //   .then((response) => response.json())
-      //   .then((response) => console.log(response));
+      const options = {
+        method: "POST",
+        headers: {
+          Authorization: `${tokens}`,
+        },
 
-      //   console.log("============================================== this is data" , data);
+        body: form,
+      };
+
+      fetch("https://api.nftport.xyz/v0/files", options)
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response.ipfs_url);
+          metadating(
+            response.ipfs_url,
+            val.name,
+            val.description,
+            val.contract
+          );
+        });
     } catch (err) {
       console.log(err);
     }
+  }
+
+  async function metadating(
+    url: string,
+    name: string,
+    desc: string,
+    con: string
+  ) {
+    try {
+      console.log(url, name, desc, con);
+
+      const options = {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `${tokens}`,
+        },
+        body: `{"name":"${name}","description":"${desc}","file_url":"${url}"}`,
+      };
+
+      await fetch("https://api.nftport.xyz/v0/metadata", options)
+        .then((response) => response.json())
+        .then((response) => {
+          cutomiseMinting(con, response.metadata_uri);
+          console.log(response);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function cutomiseMinting(con: string, url: string) {
+    console.log(con, url);
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `${tokens}`
+      },
+      body: `{"chain":"polygon","contract_address":"${ContractAddress}","metadata_uri":"${url}","mint_to_address":"${con}"}`
+    };
+
+    await fetch('https://api.nftport.xyz/v0/mints/customizable', options)
+      .then(response => response.json())
+      .then(response => console.log(response , link))
   }
 
   function handleInput(e: any) {
@@ -63,11 +111,7 @@ export default function Mint() {
   }
 
   async function handleBlob(e: any) {
-    
    
-    // const reader = new FileReader();
-    // const blobtext = reader.readAsText(e.target.files[0].name);
-
     setAllInfo((prev) => {
       return {
         ...prev,
@@ -82,7 +126,7 @@ export default function Mint() {
         onSubmit={(e: any) => {
           e.preventDefault();
 
-          // formEL.current.reset();
+          formEL.current.reset();
           minting(allInfo);
         }}
         className="flex w-11/12 md:w-2/3 rounded-lg bg-white/75 backdrop-blur-sm flex-col items-start p-3 justify-center"
