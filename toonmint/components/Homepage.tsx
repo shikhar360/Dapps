@@ -20,7 +20,7 @@ export default function Home() {
           </span>
         </h1>
         <div className=" mt-4  md:ml-28 flex gap-2 md:gap-8 items-center md:justify-start justify-center w-full">
-          <ConnectButton />
+         
           <span className="bg-[#432818] p-1.5 rounded-xl text-lg font-medium hover:scale-105 text-[#ffffff] ">
             Mint NOW !
           </span>

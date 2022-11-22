@@ -13,9 +13,7 @@ interface MyVals {
 export default function Mint() {
   const formEL = useRef<HTMLFormElement>(null!);
   const tokens = process.env.NEXT_PUBLIC_TOKEN;
-  const [link, setLink] = useState<string>(
-    `https://opensea.io/assets/matic/${ContractAddress}`
-  );
+  
  
   const [allInfo, setAllInfo] = useState<MyVals>({
     file: "",
@@ -27,7 +25,13 @@ export default function Mint() {
   async function minting(val: MyVals) {
     try {
       console.log(val.file);
+      if(!(val.file && val.contract && val.description && val.name)){
+        alert("Please fill all the details")
+        return
+      }
 
+     
+     
       const form = new FormData();
       form.append("file", val.file);
 
@@ -51,6 +55,7 @@ export default function Mint() {
             val.contract
           );
         });
+        
     } catch (err) {
       console.log(err);
     }
@@ -98,7 +103,7 @@ export default function Mint() {
 
     await fetch('https://api.nftport.xyz/v0/mints/customizable', options)
       .then(response => response.json())
-      .then(response => console.log(response , link))
+      .then(response =>{ console.log(response  ) ; alert("Your NFT is getting MINTED , It will take some time to show up in al the places , Thanks for your patience ")})
   }
 
   function handleInput(e: any) {
@@ -142,7 +147,7 @@ export default function Mint() {
           name="file"
           accept="image/*"
           onChange={handleBlob}
-          className="file:bg-gray-600 file:border-none file:p-2 file:py-1 file:shadow-md file:shadow-gray-500 file:text-white file:px-2 file:rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 p-3 rounded-xl text-sm my-2"
+          className="file:bg-gray-600 file:border-none file:p-2 file:py-1 file:shadow-md file:shadow-gray-500 file:text-white file:px-2 file:rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 p-3 rounded-xl text-sm my-2 w-11/12 md:w-2/6"
         />
 
         <h6>Name</h6>
@@ -173,7 +178,7 @@ export default function Mint() {
           onChange={handleInput}
         />
         <button
-          className="bg-gray-600 shadow-md shadow-gray-500 rounded-lg py-0.5 px-2 text-white transition-all duration-300 ease-linear mt-3 hover:bg-gray-400 w-full mx-auto"
+          className="bg-gray-600 shadow-md shadow-gray-500 rounded-lg py-0.5 px-2 text-white transition-all duration-300 ease-linear mt-3 hover:bg-gray-400  mx-auto w-11/12 md:w-2/6"
           type="submit"
         >
           Submit

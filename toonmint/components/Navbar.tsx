@@ -75,7 +75,7 @@ export default function Navbar() {
               </Link>
             </span>
             <span className="cursor-pointer hover:bg-green-500  rounded-xl transition-all duration-300 ease-linear  ">
-             <ConnectButton/>
+           
             </span>
           </>
         ) : null}
